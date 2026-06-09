@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Stop old container if exists
-        run: docker stop Franz_8081 || true && docker rm Franz_8081 || true
+        run: docker stop franz_8081 || true && docker rm franz_8081 || true
 
       - name: Build new Docker image
-        run: docker build -t Franz_image_8081 .
+        run: docker build -t franz_image_8081 .
 
       - name: Run new container on port 8081
-        run: docker run -d --name Franz_8081 -p 8081:80 Franz_image_8081
+        run: docker run -d --name franz_8081 -p 8081:80 franz_image_8081

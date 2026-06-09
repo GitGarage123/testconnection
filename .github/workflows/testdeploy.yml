@@ -1,14 +1,13 @@
 name: Deploy Franz Project
-
 on:
-  push:
-    branches: ["main"]
+push:
+  branches: ["main"]
+    
+    jobs:
+deploy:
+runs-on: self-hosted
 
-jobs:
-  deploy:
-    runs-on: self-hosted
-
-    steps:
+steps:
     - name: Check out repository code
       uses: actions/checkout@v4
 

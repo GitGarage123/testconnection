@@ -1,0 +1,22 @@
+name: Deploy *Users* Project
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Check out repository code
+      uses: actions/checkout@v4
+
+      - name: Stop old container if exists
+      run: docker stop *user_port* || true && docker rm *user_port* || true
+
+      - name: Build new Docker image
+      run: docker build -t *user_image_port* .
+
+      - name: Run new container on port *port*
+      run: docker run -d --name *user_port* -p *port*:80 *user_image_port*

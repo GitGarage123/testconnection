@@ -20,4 +20,4 @@ jobs:
         run: docker build -t franz_image_8081 .
 
       - name: Run new container on port 8081
-        run: docker run -d --name franz_8081 -p 8081:80 franz_image_8081
+        run: docker run -d --restart unless-stopped --name franz_8081 -p 8081:80 franz_image_8081
